@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-<h1>{{$title}}</h1>
-<a href="{{route('help')}}">help</a>
+<h1>{{$help}}</h1>
+<a href={{route('home')}}>terug</a>
 </body>
 </html>

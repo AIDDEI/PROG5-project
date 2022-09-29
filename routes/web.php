@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HelpController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\homeController::class,'show']);
+Route::get('/', [HomeController::class,'show'])->name('home');
+Route::get('/help', [HelpController::class, 'help'])->name('help');
