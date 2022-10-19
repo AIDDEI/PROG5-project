@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class MainController extends Controller
 {
@@ -13,7 +14,8 @@ class MainController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return view('marketplace', ['products'=>$products]);
     }
 
     /**
@@ -45,7 +47,7 @@ class MainController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('products.details', ['product' => Product::find($id)]);
     }
 
     /**
@@ -77,8 +79,8 @@ class MainController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
     }
 }

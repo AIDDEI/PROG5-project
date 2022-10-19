@@ -15,6 +15,8 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                        <br><br>
+                        <a href="{{route('marketplace.index')}}">Producten</a>
                 </div>
             </div>
         </div>
