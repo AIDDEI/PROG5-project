@@ -15,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class,'show'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/help', [HelpController::class, 'help'])->name('help');
+Route::resource('/marketplace', \App\Http\Controllers\MainController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
