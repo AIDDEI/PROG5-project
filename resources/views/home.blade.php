@@ -17,6 +17,8 @@
                     {{ __('You are logged in!') }}
                         <br><br>
                         <a href="{{route('marketplace.index')}}">Producten</a>
+                    <br><br>
+                    <a href="{{route('marketplace.create')}}">Nieuw product</a>
                 </div>
             </div>
         </div>

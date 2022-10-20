@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use SebastianBergmann\Diff\Exception;
 
 class MainController extends Controller
 {
@@ -25,7 +26,8 @@ class MainController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::all();
+        return view('products.create');
     }
 
     /**
@@ -36,7 +38,15 @@ class MainController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'price' => 'required',
+            'photo' => 'required|string|max:255',
+            'date' => 'required'
+        ]);
+        Product::create($request->all());
+        return redirect()->route('marketplace.index');
     }
 
     /**
@@ -79,8 +89,10 @@ class MainController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
+        $product = Product::find($id);
         $product->delete();
+        return redirect('marketplace');
     }
 }
